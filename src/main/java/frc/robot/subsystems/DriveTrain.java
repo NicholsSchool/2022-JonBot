@@ -18,44 +18,44 @@ import frc.robot.RobotMap;
 
 public class DriveTrain extends SubsystemBase {
 
-  private WPI_TalonSRX lFMaster;
-  private WPI_TalonSRX lFSlave;
+  private WPI_TalonSRX lFLeader;
+  private WPI_TalonSRX lFFollower;
 
-  private WPI_TalonSRX lBMaster;
-  private WPI_TalonSRX lBSLave;
+  private WPI_TalonSRX lBLeader;
+  private WPI_TalonSRX lBFollower;
 
-  private WPI_TalonSRX rFMaster;
-  private WPI_TalonSRX rFSLave;
+  private WPI_TalonSRX rFLeader;
+  private WPI_TalonSRX rFFollower;
 
-  private WPI_TalonSRX rBMaster;
-  private WPI_TalonSRX rBSlave;
+  private WPI_TalonSRX rBLeader;
+  private WPI_TalonSRX rBFollower;
 
   private DifferentialDrive drive;
 
   public DriveTrain() {
 
-    lFMaster = new WPI_TalonSRX(RobotMap.LEFT_FRONT_MASTER_ID);
-    lFSlave = new WPI_TalonSRX(RobotMap.LEFT_FRONT_SLAVE_ID);
+    lFLeader = new WPI_TalonSRX(RobotMap.LEFT_FRONT_LEADER_ID);
+    lFFollower = new WPI_TalonSRX(RobotMap.LEFT_FRONT_FOLLOWER_ID);
 
-    lBMaster = new WPI_TalonSRX(RobotMap.LEFT_BACK_MASTER_ID);
-    lBSLave = new WPI_TalonSRX(RobotMap.LEFT_BACK_SLAVE_ID);
+    lBLeader = new WPI_TalonSRX(RobotMap.LEFT_BACK_LEADER_ID);
+    lBFollower = new WPI_TalonSRX(RobotMap.LEFT_BACK_FOLLOWER_ID);
 
-    rFMaster = new WPI_TalonSRX(RobotMap.RIGHT_FRONT_MASTER_ID);
-    rFSLave = new WPI_TalonSRX(RobotMap.RIGHT_FRONT_SLAVE_ID);
+    rFLeader = new WPI_TalonSRX(RobotMap.RIGHT_FRONT_LEADER_ID);
+    rFFollower = new WPI_TalonSRX(RobotMap.RIGHT_FRONT_FOLLOWER_ID);
 
-    rBMaster = new WPI_TalonSRX(RobotMap.RIGHT_BACK_MASTER_ID);
-    rBSlave = new WPI_TalonSRX(RobotMap.RIGHT_BACK_SLAVE_ID);
+    rBLeader = new WPI_TalonSRX(RobotMap.RIGHT_BACK_LEADER_ID);
+    rBFollower = new WPI_TalonSRX(RobotMap.RIGHT_BACK_FOLLOWER_ID);
 
-    lFSlave.set(ControlMode.Follower, RobotMap.LEFT_FRONT_MASTER_ID);
+    lFFollower.set(ControlMode.Follower, RobotMap.LEFT_FRONT_LEADER_ID);
 
-    lBSLave.set(ControlMode.Follower, RobotMap.LEFT_BACK_MASTER_ID);
+    lBFollower.set(ControlMode.Follower, RobotMap.LEFT_BACK_LEADER_ID);
 
-    rFSLave.set(ControlMode.Follower, RobotMap.RIGHT_FRONT_MASTER_ID);
+    rFFollower.set(ControlMode.Follower, RobotMap.RIGHT_FRONT_LEADER_ID);
 
-    rBSlave.set(ControlMode.Follower, RobotMap.RIGHT_BACK_MASTER_ID);
+    rBFollower.set(ControlMode.Follower, RobotMap.RIGHT_BACK_LEADER_ID);
 
-    drive = new DifferentialDrive(new SpeedControllerGroup(lFMaster, lBMaster),
-        new SpeedControllerGroup(rFMaster, rBMaster));
+    drive = new DifferentialDrive(new SpeedControllerGroup(lFLeader, lBLeader),
+        new SpeedControllerGroup(rFLeader, rBLeader));
   }
 
   @Override
